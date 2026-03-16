@@ -36,7 +36,7 @@ except Exception as e:
 # -----------------------------
 # SUMO start
 # -----------------------------
-sumo_binary = "sumo-gui"
+sumo_binary = "sumo"
 sumo_cmd = [sumo_binary, "-c", sumo_cfg, "--start"]
 
 print(f"Starting SUMO with command: {' '.join(sumo_cmd)}")
@@ -99,10 +99,13 @@ try:
                 traffic_lights.append(tl_info)
 
             # Global state
+            avg_speed = sum([v["speed"] for v in vehicle_data]) / len(vehicle_data) if vehicle_data else 0
+            
             simulation_data = {
                 "step": step,
                 "timestamp": datetime.now(UTC),
                 "vehicle_count": len(vehicles),
+                "average_speed": avg_speed,
                 "total_waiting_time": total_waiting,
                 "total_queue_length": total_queue,
                 "vehicles": vehicle_data,

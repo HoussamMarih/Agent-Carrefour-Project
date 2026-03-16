@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-11T13:40:49.551139+00:00 by Eclipse SUMO GUI 1.26.0
+<!-- generated on 2026-03-16T19:48:25.762879+00:00 by Eclipse SUMO sumo 1.26.0
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="C:\Users\pc\Desktop\Agent Carrefour Projet\sumo\osm.net.xml"/>
-        <route-files value="C:\Users\pc\Desktop\Agent Carrefour Projet\sumo\osm.passenger.trips.xml"/>
-        <additional-files value="C:\Users\pc\Desktop\Agent Carrefour Projet\sumo\osm.poly.xml.gz,C:\Users\pc\Desktop\Agent Carrefour Projet\sumo\output.add.xml"/>
+        <net-file value="C:\Users\pc\Desktop\Agent Carrefour Project\sumo\osm.net.xml"/>
+        <route-files value="C:\Users\pc\Desktop\Agent Carrefour Project\sumo\osm.passenger.trips.xml"/>
+        <additional-files value="C:\Users\pc\Desktop\Agent Carrefour Project\sumo\osm.poly.xml.gz,C:\Users\pc\Desktop\Agent Carrefour Project\sumo\output.add.xml"/>
     </input>
 
     <output>
-        <tripinfo-output value="C:\Users\pc\Desktop\Agent Carrefour Projet\sumo\tripinfos.xml"/>
-        <statistic-output value="C:\Users\pc\Desktop\Agent Carrefour Projet\sumo\stats.xml"/>
+        <tripinfo-output value="C:\Users\pc\Desktop\Agent Carrefour Project\sumo\tripinfos.xml"/>
+        <statistic-output value="C:\Users\pc\Desktop\Agent Carrefour Project\sumo\stats.xml"/>
     </output>
 
     <processing>
@@ -31,11 +31,11 @@
     </report>
 
     <traci_server>
-        <remote-port value="57754"/>
+        <remote-port value="49841"/>
     </traci_server>
 
     <gui_only>
-        <gui-settings-file value="C:\Users\pc\Desktop\Agent Carrefour Projet\sumo\osm.view.xml"/>
+        <gui-settings-file value="C:\Users\pc\Desktop\Agent Carrefour Project\sumo\osm.view.xml"/>
         <start value="true"/>
     </gui_only>
 
@@ -43,13 +43,13 @@
 -->
 
 <statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
-    <performance clockBegin="990318.82" clockEnd="990424.42" clockDuration="105.59" traciDuration="103.66" realTimeFactor="23.73" vehicleUpdatesPerSecond="26.31" personUpdatesPerSecond="0.00" begin="0.00" end="2506.00" duration="2506.00"/>
-    <vehicles loaded="57" inserted="55" running="2" waiting="0"/>
+    <performance clockBegin="433001.57" clockEnd="433110.76" clockDuration="109.19" traciDuration="108.40" realTimeFactor="32.98" vehicleUpdatesPerSecond="36.66" personUpdatesPerSecond="0.00" begin="0.00" end="3601.00" duration="3601.00"/>
+    <vehicles loaded="78" inserted="78" running="0" waiting="0"/>
     <teleports total="0" jam="0" yield="0" wrongLane="0"/>
     <safety collisions="0" emergencyStops="0" emergencyBraking="0"/>
     <persons loaded="0" running="0" jammed="0"/>
     <personTeleports total="0" abortWait="0" wrongDest="0"/>
-    <vehicleTripStatistics count="53" routeLength="736.94" speed="15.06" duration="51.09" waitingTime="5.04" timeLoss="13.03" departDelay="0.50" departDelayWaiting="-1.00" totalTravelTime="2708.00" totalDepartDelay="26.49"/>
+    <vehicleTripStatistics count="78" routeLength="744.68" speed="15.15" duration="51.32" waitingTime="4.73" timeLoss="12.38" departDelay="0.48" departDelayWaiting="-1.00" totalTravelTime="4003.00" totalDepartDelay="37.44"/>
     <pedestrianStatistics number="0" routeLength="0.00" duration="0.00" timeLoss="0.00"/>
     <rideStatistics number="0"/>
     <transportStatistics number="0"/>
