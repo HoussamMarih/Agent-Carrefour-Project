@@ -83,10 +83,3 @@ Si le tableau de bord est vide au premier lancement, remplissez la base de donn�
 2. Exécutez le point de terminaison `POST /simulation/start`.
 3. Observez les logs dans votre terminal ; les données apparaîtront en temps réel.
 
----
-
-## 📄 Licence
-Ce projet est destiné à la recherche et à l'éducation. Distribué sous licence MIT.
-
----
-*Créé avec ❤️ pour la recherche avancée en gestion du trafic.*
