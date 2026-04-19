@@ -18,7 +18,8 @@ app.add_middleware(
 )
 
 # MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
+mongo_url = os.getenv("MONGO_URL", "mongodb://localhost:27017/")
+client = MongoClient(mongo_url)
 db = client["traffic_rl"]
 collection = db["simulation_data"]
 
@@ -26,7 +27,7 @@ collection = db["simulation_data"]
 simulation_process = None
 
 # Network File Path
-net_file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sumo", "osm.net.xml")
+net_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sumo", "osm.net.xml")
 
 @app.get("/network")
 async def get_network():
@@ -76,12 +77,10 @@ async def start_simulation():
     script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "store_simulation.py")
     
     try:
-        # Launch process in background
+        # Launch process in background - Redirect output to container stdout/stderr
         simulation_process = subprocess.Popen(
             ["python", script_path],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP # Required for sending signals on Windows
+            env=os.environ.copy()
         )
         return {"status": "started"}
     except Exception as e:

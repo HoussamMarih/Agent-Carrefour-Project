@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pymongo
+python-dotenv
+traci
+numpy
+torch
+torchvision
+torchaudio
+pip-search
+xmltodict

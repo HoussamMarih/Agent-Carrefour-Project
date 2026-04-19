@@ -7,13 +7,12 @@ import sys
 # -----------------------------
 # Path Resolution
 # -----------------------------
-# Get the absolute path to the project root (Carrefour Projet)
+# Get the absolute path to the backend root
 script_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.dirname(script_dir)
-sumo_cfg = os.path.join(project_root, "sumo", "osm.sumocfg")
+sumo_cfg = os.path.join(script_dir, "sumo", "osm.sumocfg")
 sumo_cfg = os.path.normpath(sumo_cfg)
 
-print(f"Project Root: {project_root}")
+print(f"Backend Root: {script_dir}")
 print(f"SUMO Config: {sumo_cfg}")
 
 if not os.path.exists(sumo_cfg):
@@ -23,14 +22,17 @@ if not os.path.exists(sumo_cfg):
 # -----------------------------
 # MongoDB connection
 # -----------------------------
+mongo_url = os.getenv("MONGO_URL", "mongodb://localhost:27017/")
+print(f"Connecting to MongoDB at: {mongo_url}", flush=True)
+
 try:
-    client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS=5000)
+    client = MongoClient(mongo_url, serverSelectionTimeoutMS=5000)
     client.server_info() # trigger connection
     db = client["traffic_rl"]
     collection = db["simulation_data"]
-    print("Connected to MongoDB successfully")
+    print("Connected to MongoDB successfully", flush=True)
 except Exception as e:
-    print(f"WARNING: Could not connect to MongoDB: {e}. Data will not be saved.")
+    print(f"WARNING: Could not connect to MongoDB: {e}. Data will not be saved.", flush=True)
     collection = None
 
 # -----------------------------
@@ -39,12 +41,12 @@ except Exception as e:
 sumo_binary = "sumo"
 sumo_cmd = [sumo_binary, "-c", sumo_cfg, "--start"]
 
-print(f"Starting SUMO with command: {' '.join(sumo_cmd)}")
+print(f"Starting SUMO with command: {' '.join(sumo_cmd)}", flush=True)
 try:
     traci.start(sumo_cmd)
-    print("Simulation started...")
+    print("Simulation started...", flush=True)
 except Exception as e:
-    print(f"CRITICAL ERROR: Could not start TraCI: {e}")
+    print(f"CRITICAL ERROR: Could not start TraCI: {e}", flush=True)
     sys.exit(1)
 
 step = 0
@@ -115,7 +117,7 @@ try:
             collection.insert_one(simulation_data)
 
         if step % 100 == 0:
-            print(f"Step {step} processed.")
+            print(f"Step {step} processed.", flush=True)
         step += 1
 
 except traci.exceptions.FatalTraCIError:

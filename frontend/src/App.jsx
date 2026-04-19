@@ -6,7 +6,7 @@ import {
   Pause, RotateCcw, History, SkipBack, SkipForward
 } from 'lucide-react';
 
-const API = 'http://localhost:8000';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 // SUMO XY → WGS84 (linear interpolation from network bounds)
 const SUMO_W = 950.21, SUMO_H = 535.15;
@@ -104,7 +104,7 @@ export default function App() {
       const d = await r.json();
       if (!d.error) {
         setPlayData(d);
-        setPlayHistory(prev => [...prev, d].slice(-20)); // Trail of last 20 steps
+        setPlayHistory(prev => [...prev, d].slice(-200)); // Trail of last 200 steps
       }
     } catch { /* silent */ }
   }, []);
